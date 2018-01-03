@@ -22,7 +22,7 @@ RUN apt-get update &&  apt-get install  -y \
     openssh-client \  
     python3-dev \
     python3-numpy \
-    libboost-python-dev \    
+    libboost-python-dev \
     openjdk-8-jdk \
     libc6:i386 \
     libstdc++6:i386 \
@@ -30,10 +30,7 @@ RUN apt-get update &&  apt-get install  -y \
     libncurses5:i386 \
     libz1:i386 \
  && apt-get clean \
- && rm -rf /var/lib/apt/lists/* 
-
-RUN /root/install_ccache.sh 
-ENV CCACHE_DIR=/ccache
+ && rm -rf /var/lib/apt/lists/*
 
 RUN apt-get update \
  && apt-get install -y software-properties-common \
@@ -46,9 +43,6 @@ RUN update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-7 999 \
  && update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-7 999 \
  && update-alternatives --install /usr/bin/cc  cc  /usr/bin/gcc-7 999 \
  && update-alternatives --install /usr/bin/c++ c++ /usr/bin/g++-7 999
- 
-ENV CC="ccache gcc" CXX="ccache g++" 
-
 
 ENV ANDROID_HOME /opt/android-sdk-linux
 
