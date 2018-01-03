@@ -6,6 +6,8 @@ RUN apt-get update &&  apt-get install  -y \
     build-essential \
     wget \
     cmake \ 
+    unzip \
+    zip \
     curl \
     doxygen \
     git \
