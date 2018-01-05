@@ -143,7 +143,7 @@ RUN apt-get purge maven maven2 \
 # ------------------------------------------------------
 # ------------------------------------------------------
 ENV ANDROID_NDK_HOME /opt/android-ndk
-ENV ANDROID_NDK_VERSION r16b
+ENV ANDROID_NDK_VERSION r14b
 
 RUN mkdir /opt/android-ndk-tmp && \
     cd /opt/android-ndk-tmp && \
