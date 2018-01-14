@@ -1,4 +1,4 @@
-FROM ubuntu:17.04
+FROM ubuntu:17.10
 
 RUN dpkg --add-architecture i386
 RUN apt-get update &&  apt-get install  -y \
@@ -25,18 +25,6 @@ RUN apt-get update &&  apt-get install  -y \
     libz1:i386 \
  && apt-get clean \
  && rm -rf /var/lib/apt/lists/*
-
-RUN apt-get update \
- && apt-get install -y software-properties-common \
- && add-apt-repository -y ppa:ubuntu-toolchain-r/test \
- && apt-get update \
- && apt-get install -y gcc-7 g++-7 \
- && rm -rf /var/lib/apt/lists/* 
-
-RUN update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-7 999 \
- && update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-7 999 \
- && update-alternatives --install /usr/bin/cc  cc  /usr/bin/gcc-7 999 \
- && update-alternatives --install /usr/bin/c++ c++ /usr/bin/g++-7 999
 
 ENV ANDROID_HOME /opt/android-sdk-linux
 
