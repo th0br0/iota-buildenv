@@ -70,7 +70,7 @@ RUN yes | sdkmanager \
     "platforms;android-19" \
     "build-tools;27.0.3" \
     "build-tools;27.0.2" \
-    "system-images;android-27;google_apis;x86_64" \
+    "system-images;android-26;google_apis;x86_64" \
     "system-images;android-19;default;armeabi-v7a" \
     "extras;android;m2repository" \
     "extras;google;m2repository" \
