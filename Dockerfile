@@ -12,20 +12,8 @@ RUN apt-get update &&  apt-get install  -y \
     doxygen \
     git \
     graphviz \
-    libboost-dev \
-    libboost-filesystem-dev \
-    libboost-program-options-dev \
-    libboost-regex-dev \
-    libboost-system-dev \
-    libboost-thread-dev \
-    libbz2-dev \
-    libopenmpi-dev \
-    openmpi-bin \
-    openmpi-common  \
-    openssh-client \  
     python3-dev \
     python3-numpy \
-    libboost-python-dev \
     openjdk-8-jdk \
     gcc-multilib \
     g++-multilib \
@@ -88,26 +76,20 @@ RUN sdkmanager "emulator" "tools" "platform-tools"
 # Please keep all sections in descending order!
 RUN yes | sdkmanager \
     "platforms;android-27" \
-    "platforms;android-26" \
     "platforms;android-25" \
     "platforms;android-24" \
     "platforms;android-23" \
-    "platforms;android-22" \
-    "platforms;android-21" \
     "platforms;android-19" \
     "build-tools;27.0.3" \
     "build-tools;27.0.2" \
-    "build-tools;27.0.1" \
-    "build-tools;27.0.0" \
-    "system-images;android-26;google_apis;x86" \
-    "system-images;android-25;google_apis;armeabi-v7a" \
+    "system-images;android-27;google_apis;x86_64" \
     "system-images;android-19;default;armeabi-v7a" \
     "extras;android;m2repository" \
     "extras;google;m2repository" \
     "extras;google;google_play_services" \
     "extras;m2repository;com;android;support;constraint;constraint-layout;1.0.2" \
-    "extras;m2repository;com;android;support;constraint;constraint-layout;1.0.1" \
-    "add-ons;addon-google_apis-google-23" 
+    "extras;m2repository;com;android;support;constraint;constraint-layout-solver;1.0.2" \
+    "add-ons;addon-google_apis-google-24" 
 
 # ------------------------------------------------------
 # --- Install Gradle from PPA
