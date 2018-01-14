@@ -10,6 +10,10 @@ RUN apt-get update &&  apt-get install  -y \
     zip \
     curl \
     doxygen \
+    libssl-dev \
+    openssl \
+    xxd \
+    ccache \
     git \
     graphviz \
     python3-dev \
@@ -17,6 +21,7 @@ RUN apt-get update &&  apt-get install  -y \
     openjdk-8-jdk \
     gcc-multilib \
     g++-multilib \
+    libssl-dev:i386 \
     libc6-dev-i386 \
     libc6:i386 \
     libstdc++6:i386 \
