@@ -1,6 +1,5 @@
-FROM ubuntu:17.10
+FROM ubuntu:18.04
 
-RUN dpkg --add-architecture i386
 RUN apt-get update &&  apt-get install  -y \
     automake \
     build-essential \
@@ -18,19 +17,19 @@ RUN apt-get update &&  apt-get install  -y \
     graphviz \
     python3-dev \
     python3-numpy \
+    python-pyparsing\
+    python3-pyparsing\
     openjdk-8-jdk \
     python \
-    gcc-multilib \
-    g++-multilib \
-    libssl-dev:i386 \
-    libc6-dev-i386 \
-    libc6:i386 \
-    libstdc++6:i386 \
-    libgcc1:i386 \
-    libncurses5:i386 \
-    libz1:i386 \
+    gcc \
+    g++ \
  && apt-get clean \
  && rm -rf /var/lib/apt/lists/*
+
+ENV BAZEL_VERSION 0.14.0
+RUN wget -q https://github.com/bazelbuild/bazel/releases/download/${BAZEL_VERSION}/bazel-${BAZEL_VERSION}-installer-linux-x86_64.sh -O bazel_installer.sh \
+    && chmod a+x ./bazel_installer.sh && ./bazel_installer.sh --prefix=/usr \
+    && rm bazel_installer.sh
 
 ENV ANDROID_HOME /opt/android-sdk-linux
 
@@ -41,7 +40,7 @@ ENV ANDROID_HOME /opt/android-sdk-linux
 # --- Download Android SDK tools into $ANDROID_HOME
 
 RUN cd /opt \
-    && wget -q https://dl.google.com/android/repository/sdk-tools-linux-4333796.zip -O android-sdk-tools.zip \
+    && wget -q https://dl.google.com/android/repository/sdk-tools-linux-3859397.zip -O android-sdk-tools.zip \
     && unzip -q android-sdk-tools.zip -d ${ANDROID_HOME} \
     && rm android-sdk-tools.zip
 
@@ -107,7 +106,7 @@ RUN apt-get purge maven maven2 \
 # ------------------------------------------------------
 # ------------------------------------------------------
 ENV ANDROID_NDK_HOME /opt/android-ndk
-ENV ANDROID_NDK_VERSION r14b
+ENV ANDROID_NDK_VERSION r16
 
 RUN mkdir /opt/android-ndk-tmp && \
     cd /opt/android-ndk-tmp && \
