@@ -30,6 +30,7 @@ ENV BAZEL_VERSION 0.14.0
 RUN wget -q https://github.com/bazelbuild/bazel/releases/download/${BAZEL_VERSION}/bazel-${BAZEL_VERSION}-installer-linux-x86_64.sh -O bazel_installer.sh \
     && chmod a+x ./bazel_installer.sh && ./bazel_installer.sh --prefix=/usr \
     && rm bazel_installer.sh
+COPY .bazelrc /etc/bazel.bazelrc
 
 ENV ANDROID_HOME /opt/android-sdk-linux
 
