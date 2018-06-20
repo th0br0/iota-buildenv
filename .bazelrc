@@ -5,9 +5,12 @@ startup --batch
 
 # Similarly, we need to workaround sandboxing issues:
 #   https://github.com/bazelbuild/bazel/issues/418
-build  --verbose_failures 
+build --disk_cache=
+build --verbose_failures 
 build --spawn_strategy=remote --genrule_strategy=remote --remote_http_cache=https://storage.googleapis.com/if-bazel-cache --google_credentials=/conf/cache_credentials.json
+
 test --spawn_strategy=remote --genrule_strategy=remote --remote_http_cache=https://storage.googleapis.com/if-bazel-cache --google_credentials=/conf/cache_credentials.json
+test --disk_cache=
 
 # Force bazel output to use colors (good for jenkins) and print useful errors.
 common --color=yes
