@@ -1,6 +1,8 @@
 FROM ubuntu:18.04
 
-RUN apt-get update &&  apt-get install  -y \
+RUN dpkg --add-architecture i386 \
+ && apt-get update \
+ && apt-get install  -y \
     automake \
     build-essential \
     wget \
@@ -23,6 +25,9 @@ RUN apt-get update &&  apt-get install  -y \
     python \
     gcc \
     g++ \
+    libc6:i386 \
+    gcc-multilib \
+    g++-multilib \
  && apt-get clean \
  && rm -rf /var/lib/apt/lists/*
 
