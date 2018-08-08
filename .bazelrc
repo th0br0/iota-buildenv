@@ -3,6 +3,7 @@
 # The easiest solution is to set up a bazelrc file forcing --batch.
 startup --batch
 
+build --experimental_repository_cache=/cache/repository
 build --disk_cache=
 build --verbose_failures 
 build --remote_http_cache=https://storage.googleapis.com/if-bazel-cache --google_credentials=/conf/cache_credentials.json

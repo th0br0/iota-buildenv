@@ -124,7 +124,7 @@ ENV PATH ${PATH}:${ANDROID_NDK_HOME}
 # -------------------- BAZEL ---------------------------
 # ------------------------------------------------------
 # ------------------------------------------------------
-ENV BAZEL_VERSION 0.14.1
+ENV BAZEL_VERSION 0.16.0
 RUN wget -q https://github.com/bazelbuild/bazel/releases/download/${BAZEL_VERSION}/bazel-${BAZEL_VERSION}-installer-linux-x86_64.sh -O bazel_installer.sh \
       && chmod a+x ./bazel_installer.sh && ./bazel_installer.sh --prefix=/usr \
       && rm bazel_installer.sh
