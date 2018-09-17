@@ -40,7 +40,7 @@ ENV ANDROID_HOME /opt/android-sdk-linux
 # --- Download Android SDK tools into $ANDROID_HOME
 
 RUN cd /opt \
-    && wget -q https://dl.google.com/android/repository/sdk-tools-linux-3859397.zip -O android-sdk-tools.zip \
+    && wget -q https://dl.google.com/android/repository/sdk-tools-linux-4333796.zip -O android-sdk-tools.zip \
     && unzip -q android-sdk-tools.zip -d ${ANDROID_HOME} \
     && rm android-sdk-tools.zip
 
@@ -106,7 +106,7 @@ RUN apt-get purge maven maven2 \
 # ------------------------------------------------------
 # ------------------------------------------------------
 ENV ANDROID_NDK_HOME /opt/android-ndk
-ENV ANDROID_NDK_VERSION r16
+ENV ANDROID_NDK_VERSION r17c
 
 RUN mkdir /opt/android-ndk-tmp && \
     cd /opt/android-ndk-tmp && \
@@ -124,7 +124,7 @@ ENV PATH ${PATH}:${ANDROID_NDK_HOME}
 # -------------------- BAZEL ---------------------------
 # ------------------------------------------------------
 # ------------------------------------------------------
-ENV BAZEL_VERSION 0.16.0
+ENV BAZEL_VERSION 0.17.1
 RUN wget -q https://github.com/bazelbuild/bazel/releases/download/${BAZEL_VERSION}/bazel-${BAZEL_VERSION}-installer-linux-x86_64.sh -O bazel_installer.sh \
       && chmod a+x ./bazel_installer.sh && ./bazel_installer.sh --prefix=/usr \
       && rm bazel_installer.sh
