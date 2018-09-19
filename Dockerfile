@@ -28,6 +28,7 @@ RUN dpkg --add-architecture i386 \
     libc6:i386 \
     gcc-multilib \
     g++-multilib \
+    clang-format \
  && apt-get clean \
  && rm -rf /var/lib/apt/lists/*
 
