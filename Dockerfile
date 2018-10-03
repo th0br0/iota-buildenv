@@ -15,6 +15,7 @@ RUN dpkg --add-architecture i386 \
     openssl \
     xxd \
     ccache \
+    libtinfo5 \
     git \
     graphviz \
     python3-dev \
