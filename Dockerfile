@@ -120,7 +120,6 @@ RUN mkdir /opt/android-ndk-tmp && \
 
 ENV PATH ${PATH}:${ANDROID_NDK_HOME}
 
-
 # ------------------------------------------------------
 # ------------------------------------------------------
 # -------------------- BAZEL ---------------------------
@@ -131,3 +130,7 @@ RUN wget -q https://github.com/bazelbuild/bazel/releases/download/${BAZEL_VERSIO
       && chmod a+x ./bazel_installer.sh && ./bazel_installer.sh --prefix=/usr \
       && rm bazel_installer.sh
 COPY .bazelrc /etc/bazel.bazelrc
+
+# --- Install bazel buildifier
+ENV BUILDIFIER_PATH /usr/bin/buildifier
+RUN wget https://github.com/bazelbuild/buildtools/releases/download/0.17.2/buildifier -O ${BUILDIFIER_PATH} && chmod a+x ${BUILDIFIER_PATH}
