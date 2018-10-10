@@ -122,19 +122,6 @@ ENV PATH ${PATH}:${ANDROID_NDK_HOME}
 
 # ------------------------------------------------------
 # ------------------------------------------------------
-# --------------------  Go   ---------------------------
-# ------------------------------------------------------
-# ------------------------------------------------------
-ENV GOVERSION 1.11.1
-ENV GOROOT /opt/go
-ENV GOPATH /root/go
-
-RUN cd /opt && wget https://dl.google.com/go/go${GOVERSION}.linux-amd64.tar.gz && \
-    tar zxf go${GOVERSION}.linux-amd64.tar.gz && rm go${GOVERSION}.linux-amd64.tar.gz && \
-    ln -s /opt/go/bin/go /usr/bin/ && mkdir $GOPATH
-
-# ------------------------------------------------------
-# ------------------------------------------------------
 # -------------------- BAZEL ---------------------------
 # ------------------------------------------------------
 # ------------------------------------------------------
@@ -145,4 +132,5 @@ RUN wget -q https://github.com/bazelbuild/bazel/releases/download/${BAZEL_VERSIO
 COPY .bazelrc /etc/bazel.bazelrc
 
 # --- Install bazel buildifier
-RUN go get github.com/bazelbuild/buildtools/buildifier && ln -s ${GOPATH}/bin/buildifier /usr/bin/
+ENV BUILDIFIER_PATH /usr/bin/buildifier
+RUN wget https://github.com/bazelbuild/buildtools/releases/download/0.17.2/buildifier -O ${BUILDIFIER_PATH} && chmod a+x ${BUILDIFIER_PATH}
